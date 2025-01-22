@@ -4,6 +4,7 @@ import department.entity.Department;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class DepartmentRepositoryImpl implements DepartmentRepository{
     private List<Department> departmentDb;
@@ -32,5 +33,10 @@ public class DepartmentRepositoryImpl implements DepartmentRepository{
             if (dep.getName().equals(name)) return true;
         }
         return false;
+    }
+
+    @Override
+    public Optional<Department> findByName(String name) {
+        return this.departmentDb.stream().filter(dep -> dep.getName().equals(name)).findFirst();
     }
 }

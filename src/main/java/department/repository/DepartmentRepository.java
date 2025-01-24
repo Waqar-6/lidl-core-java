@@ -2,6 +2,7 @@ package department.repository;
 
 import department.entity.Department;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface DepartmentRepository {
@@ -13,4 +14,6 @@ public interface DepartmentRepository {
 
 
     boolean deleteDepartment (Department department);
+
+    List<Department> findAll ();
 }

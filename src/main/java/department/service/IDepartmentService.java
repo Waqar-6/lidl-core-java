@@ -3,6 +3,8 @@ package department.service;
 import department.dto.DepartmentDto;
 import department.requests.CreateDepartmentRequest;
 
+import java.util.List;
+
 public interface IDepartmentService {
 
     /**
@@ -25,5 +27,11 @@ public interface IDepartmentService {
      * @return - True or False based on deletion
      */
     boolean deleteDepartmentByName (String departmentName);
+
+    /**
+     *
+     * @return - List of DepartmentDto Objects
+     */
+    List<DepartmentDto> fetchAllDepartments ();
 
 }

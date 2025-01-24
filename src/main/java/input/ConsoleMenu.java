@@ -45,6 +45,10 @@ public class ConsoleMenu {
         System.out.println("msg: " + res.getResponseMsg() + " status: " + res.getResponseStatus());
     }
 
+    public void fetchAllDepartments () {
+        System.out.println(departmentController.fetchAllDepartments());;
+    }
+
 
     // Product Methods
     public void createProduct () {
@@ -84,6 +88,7 @@ public class ConsoleMenu {
                     case 3 -> createProduct();
                     case 4 -> fetchProductByName();
                     case 5 -> deleteDepartmentByName();
+                    case 6 -> fetchAllDepartments();
                     case 0 -> {
                         running = false;
                         System.out.println("Exiting program...");

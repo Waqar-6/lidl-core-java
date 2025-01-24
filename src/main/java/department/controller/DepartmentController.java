@@ -1,11 +1,13 @@
 package department.controller;
 
 import department.dto.DepartmentDto;
+import department.entity.Department;
 import department.requests.CreateDepartmentRequest;
 import department.service.IDepartmentService;
 import shared.ResponseDto;
 import shared.constants.AppConstants;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,5 +38,10 @@ public class DepartmentController {
         boolean isDeleted = iDepartmentService.deleteDepartmentByName(departmentName);
         return isDeleted ? new ResponseDto(AppConstants.MESSAGE_200, AppConstants.STATUS_200) :
                 new ResponseDto("failed to delete Expectation failed",AppConstants.STATUS_417);
+    }
+
+    public List<DepartmentDto> fetchAllDepartments () {
+        logger.log(Level.INFO, "fetchAllDepartments end point hit");
+        return iDepartmentService.fetchAllDepartments();
     }
 }

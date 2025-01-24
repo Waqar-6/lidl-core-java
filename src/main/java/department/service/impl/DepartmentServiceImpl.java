@@ -10,6 +10,7 @@ import department.service.IDepartmentService;
 import shared.exception.ResourceAlreadyExistsException;
 import shared.exception.ResourceNotFoundException;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,6 +66,14 @@ public class DepartmentServiceImpl implements IDepartmentService {
         boolean isDeleted =  departmentRepository.deleteDepartment(department);
         logger.log(Level.INFO, "department deleted with the name: " + departmentName + " : " + isDeleted);
         return isDeleted;
+    }
+
+    @Override
+    public List<DepartmentDto> fetchAllDepartments() {
+        List<Department> departments = departmentRepository.findAll();
+        logger.log(Level.INFO, "fetched all departments");
+        return departments.stream()
+                .map(dep -> DepartmentMapper.mapToDepartmentDto(dep , new DepartmentDto())).toList();
     }
 
 }

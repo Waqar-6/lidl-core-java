@@ -45,4 +45,9 @@ public class DepartmentRepositoryImpl implements DepartmentRepository{
         this.departmentDb.remove(department);
         return false;
     }
+
+    @Override
+    public List<Department> findAll() {
+        return this.departmentDb;
+    }
 }

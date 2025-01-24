@@ -19,4 +19,11 @@ public interface IDepartmentService {
     DepartmentDto fetchDepartmentByName (String departmentName);
 
 
+    /**
+     *
+     * @param departmentName - String
+     * @return - True or False based on deletion
+     */
+    boolean deleteDepartmentByName (String departmentName);
+
 }

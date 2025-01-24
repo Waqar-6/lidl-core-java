@@ -10,4 +10,7 @@ public interface DepartmentRepository {
     boolean existsByName (String name);
 
     Optional<Department> findByName (String name);
+
+
+    boolean deleteDepartment (Department department);
 }

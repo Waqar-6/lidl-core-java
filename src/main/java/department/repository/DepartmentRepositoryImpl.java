@@ -39,4 +39,10 @@ public class DepartmentRepositoryImpl implements DepartmentRepository{
     public Optional<Department> findByName(String name) {
         return this.departmentDb.stream().filter(dep -> dep.getName().equals(name)).findFirst();
     }
+
+    @Override
+    public boolean deleteDepartment(Department department) {
+        this.departmentDb.remove(department);
+        return false;
+    }
 }

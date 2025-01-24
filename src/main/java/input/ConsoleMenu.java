@@ -39,6 +39,12 @@ public class ConsoleMenu {
         }
     }
 
+    public void deleteDepartmentByName () {
+        String departmentName = InputHandler.readString("Enter department name to delete");
+        ResponseDto res = departmentController.deleteDepartmentByName(departmentName);
+        System.out.println("msg: " + res.getResponseMsg() + " status: " + res.getResponseStatus());
+    }
+
 
     // Product Methods
     public void createProduct () {
@@ -77,6 +83,7 @@ public class ConsoleMenu {
                     case 2 -> fetchDepartmentByName();
                     case 3 -> createProduct();
                     case 4 -> fetchProductByName();
+                    case 5 -> deleteDepartmentByName();
                     case 0 -> {
                         running = false;
                         System.out.println("Exiting program...");

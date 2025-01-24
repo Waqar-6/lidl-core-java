@@ -58,4 +58,13 @@ public class DepartmentServiceImpl implements IDepartmentService {
         return DepartmentMapper.mapToDepartmentDto(department, new DepartmentDto());
     }
 
+    @Override
+    public boolean deleteDepartmentByName(String departmentName) {
+        Department department = departmentRepository.findByName(departmentName)
+                .orElseThrow(() -> new ResourceNotFoundException("Department", "name", departmentName));
+        boolean isDeleted =  departmentRepository.deleteDepartment(department);
+        logger.log(Level.INFO, "department deleted with the name: " + departmentName + " : " + isDeleted);
+        return isDeleted;
+    }
+
 }

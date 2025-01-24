@@ -30,4 +30,11 @@ public class DepartmentController {
         logger.log(Level.INFO, "department controller fetchDepartmentByName hit");
         return iDepartmentService.fetchDepartmentByName(departmentName);
     }
+
+    public ResponseDto deleteDepartmentByName (String departmentName) {
+        logger.log(Level.INFO, "deleteDepartmentByName endpoint hit");
+        boolean isDeleted = iDepartmentService.deleteDepartmentByName(departmentName);
+        return isDeleted ? new ResponseDto(AppConstants.MESSAGE_200, AppConstants.STATUS_200) :
+                new ResponseDto("failed to delete Expectation failed",AppConstants.STATUS_417);
+    }
 }

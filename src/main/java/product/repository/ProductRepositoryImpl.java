@@ -32,5 +32,11 @@ public class ProductRepositoryImpl implements ProductRepository {
         return this.productDb.stream().filter(product1 -> product1.getName().equals(productName)).findFirst();
     }
 
+    @Override
+    public List<Product> findByDepartment(String departmentName) {
+        return this.productDb.stream()
+                .filter(product -> product.getDepartment().equals(departmentName)).toList();
+    }
+
 
 }

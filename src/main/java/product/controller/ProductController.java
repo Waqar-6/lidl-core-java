@@ -6,6 +6,7 @@ import product.service.IProductService;
 import shared.ResponseDto;
 import shared.constants.AppConstants;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,5 +29,10 @@ public class ProductController {
     public ProductDto fetchProductByName (String productName) {
         logger.log(Level.INFO, "fetchByProductName controller hit");
         return iProductService.fetchProductByName(productName);
+    }
+
+    public List<ProductDto> fetchProductsByDepartment (String departmentName) {
+        logger.log(Level.INFO, "fetchProductsByDepartment endpoint hit");
+        return iProductService.fetchProductsByDepartment(departmentName);
     }
 }

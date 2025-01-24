@@ -11,7 +11,15 @@ import shared.ResponseDto;
 public class ConsoleMenu {
     private final DepartmentController departmentController;
     private final ProductController productController;
-    private final String[] options = {"1. create department", "2. fetch department by name", "3. create product", "4. fetch product by name","0. exit"};
+    private final String[] options = {
+            "1. create department",
+            "2. fetch department by name",
+            "3. create product",
+            "4. fetch product by name",
+            "5. delete department by name",
+            "6. fetch all departments",
+            "7. fetch products by department",
+            "0. exit"};
     private boolean running = true;
 
     public ConsoleMenu(DepartmentController departmentController, ProductController productController) {
@@ -67,6 +75,15 @@ public class ConsoleMenu {
         ProductDto productDto = productController.fetchProductByName(name);
         System.out.println(productDto.toString());
     }
+
+    public void fetchProductsByDepartment () {
+        String departmentName = InputHandler.readString("Enter department name");
+        System.out.println(productController.fetchProductsByDepartment(departmentName));
+    }
+
+
+
+    // menu code
 
     public void displayMenu() {
         System.out.println("\n=== Department Management System ===");

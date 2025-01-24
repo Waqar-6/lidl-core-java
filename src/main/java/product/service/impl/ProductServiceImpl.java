@@ -12,6 +12,7 @@ import product.service.IProductService;
 import shared.exception.ResourceAlreadyExistsException;
 import shared.exception.ResourceNotFoundException;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,5 +55,14 @@ public class ProductServiceImpl implements IProductService {
         Product product = productRepository.findByName(name).orElseThrow(() -> new ResourceNotFoundException("Product", "name", name));
         logger.log(Level.INFO, "product: " + name + " fetched");
         return ProductMapper.mapToProductDto(product, new ProductDto());
+    }
+
+    @Override
+    public List<ProductDto> fetchProductsByDepartment(String departmentName) {
+        List<Product> products = productRepository.findByDepartment(departmentName);
+        logger.log(Level.INFO, "all of " + departmentName + " products fetched");
+        return products.stream()
+                .map(product -> ProductMapper.mapToProductDto(product, new ProductDto()))
+                .toList();
     }
 }

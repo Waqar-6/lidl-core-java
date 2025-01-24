@@ -1,5 +1,6 @@
 package product.controller;
 
+import product.dto.ProductDto;
 import product.request.CreateProductRequest;
 import product.service.IProductService;
 import shared.ResponseDto;
@@ -21,6 +22,11 @@ public class ProductController {
     public ResponseDto createProduct (CreateProductRequest request) {
         logger.log(Level.INFO, "Create product controller method hit");
         iProductService.createProduct(request);
-        return new ResponseDto(AppConstants.STATUS_201, AppConstants.STATUS_201);
+        return new ResponseDto(AppConstants.MESSAGE_201, AppConstants.STATUS_201);
+    }
+
+    public ProductDto fetchProductByName (String productName) {
+        logger.log(Level.INFO, "fetchByProductName controller hit");
+        return iProductService.fetchProductByName(productName);
     }
 }

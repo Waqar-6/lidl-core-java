@@ -1,4 +1,5 @@
 import department.controller.DepartmentController;
+import department.repository.DepartmentRepository;
 import department.repository.DepartmentRepositoryImpl;
 import department.service.impl.DepartmentServiceImpl;
 import input.ConsoleMenu;
@@ -9,7 +10,9 @@ import product.service.impl.ProductServiceImpl;
 public class Main {
     public static void main(String[] args) {
 
-        ConsoleMenu menu = new ConsoleMenu(new DepartmentController(new DepartmentServiceImpl(new DepartmentRepositoryImpl())), new ProductController(new ProductServiceImpl(new ProductRepositoryImpl(), new DepartmentRepositoryImpl())));
+        DepartmentRepository departmentRepository = new DepartmentRepositoryImpl();
+
+        ConsoleMenu menu = new ConsoleMenu(new DepartmentController(new DepartmentServiceImpl(departmentRepository)), new ProductController(new ProductServiceImpl(new ProductRepositoryImpl(), departmentRepository)));
 
         menu.start();
     }

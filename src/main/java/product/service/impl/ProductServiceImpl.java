@@ -2,6 +2,7 @@ package product.service.impl;
 
 import department.entity.Department;
 import department.repository.DepartmentRepository;
+import product.dto.ProductDto;
 import product.entity.Product;
 import product.mapper.ProductMapper;
 import product.repository.ProductRepository;
@@ -46,5 +47,12 @@ public class ProductServiceImpl implements IProductService {
        product.setId(id);
        productRepository.save(product);
        logger.log(Level.INFO, "new Product created and saved with the name " + product.getName());
+    }
+
+    @Override
+    public ProductDto fetchProductByName(String name) {
+        Product product = productRepository.findByName(name).orElseThrow(() -> new ResourceNotFoundException("Product", "name", name));
+        logger.log(Level.INFO, "product: " + name + " fetched");
+        return ProductMapper.mapToProductDto(product, new ProductDto());
     }
 }

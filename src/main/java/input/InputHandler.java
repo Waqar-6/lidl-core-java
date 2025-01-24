@@ -9,7 +9,7 @@ public final class InputHandler {
 
     public static String readString(String prompt) {
         System.out.println(prompt + " : ");
-        scanner.nextLine(); // Clear any leftover newline characters
+//        scanner.nextLine(); // Clear any leftover newline characters
         return scanner.nextLine(); // Use nextLine() instead of next()
     }
 
